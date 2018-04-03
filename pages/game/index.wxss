@@ -1,0 +1,86 @@
+/**index.wxss**/
+
+page {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+progress {
+  height: 5%;
+}
+
+.tools {
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.game_backguond {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dddfff;
+}
+
+.game_table {
+  width: 318px;
+  height: 390px;
+  border: 1px solid #fff;
+}
+
+.game_item {
+  box-sizing: border-box;
+  height: 65px;
+  width: 53px;
+  float: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.game_item_content {
+  height: 65px;
+  width: 53px;
+  background-size: 80%;
+}
+
+/* 修复weui样式 */
+
+.weui-btn {
+  margin-top: 0;
+}
+
+/* 梅花 */
+
+.plum0 {
+  background-image: url("http://img.zcool.cn/community/0142135541fe180000019ae9b8cf86.jpg@1280w_1l_2o_100sh.png");
+}
+
+/* 方块 */
+
+.block0 {
+    background-image: url("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=897059013,2063237415&fm=27&gp=0.jpg");
+}
+
+/* 红桃 */
+
+.heart0 {
+    background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522758007682&di=32ec73fbfd91ac862207a1a2c0d4d056&imgtype=jpg&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D1883303314%2C3294001635%26fm%3D214%26gp%3D0.jpg");
+}
+
+/* 黑桃 */
+
+.spade0 {
+    background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522758026630&di=83d5efd3e14defc9fad1db322ac0f394&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D46382950%2C1095124500%26fm%3D214%26gp%3D0.jpg");
+}

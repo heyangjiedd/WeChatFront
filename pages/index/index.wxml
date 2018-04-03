@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+  <button class="weui-btn" type="primary" bindtap='bindViewTap' plain="true" >
+    <icon type="success_no_circle" size="23"></icon> 开始游戏</button>
+</view>

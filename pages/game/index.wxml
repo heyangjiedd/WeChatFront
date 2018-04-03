@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+  <progress percent="{{currentProgress}}" />
+  <view class='game_backguond'>
+    <view class='game_table'>
+      <view wx:for="{{grids}}" class='game_item' wx:key="*this" wx:for-item="item" wx:for-index="index">
+         <view  class='{{item.style}} game_item_content' id='{{item.id}}' bindtap='itemClick'></view> 
+      </view>
+    </view>
+  </view>
+  <view class='tools'>
+    <button class="weui-btn mini-btn" type="primary" size="mini">开始</button>
+    <button class="weui-btn mini-btn" type="default" size="mini">暂停</button>
+    <button class="weui-btn mini-btn" type="warn" size="mini">结束</button>
+  </view>
+</view>
