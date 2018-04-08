@@ -34,11 +34,11 @@ progress {
 .game_table {
   width: 318px;
   height: 390px;
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
 }
 
 .game_item {
-  box-sizing: border-box;
+   box-sizing: border-box; 
   height: 65px;
   width: 53px;
   float: left;
@@ -46,13 +46,14 @@ progress {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  border: 3px solid #dddfff;
 }
 
 .game_item_content {
-  height: 65px;
-  width: 53px;
-  background-size: 80%;
+  height: 100%;
+  width: 100%;
+  background-size:cover;
+  background-repeat: no-repeat
 }
 
 /* 修复weui样式 */
@@ -63,24 +64,112 @@ progress {
 
 /* 梅花 */
 
-.plum0 {
+.plum1 {
   background-image: url("http://img.zcool.cn/community/0142135541fe180000019ae9b8cf86.jpg@1280w_1l_2o_100sh.png");
 }
-
+.plum2 {
+  background-image: url("http://img.taopic.com/uploads/allimg/120727/201995-120HG1030762.jpg");
+}
+.plum3 {
+  background-image: url("http://img.zcool.cn/community/018d4e554967920000019ae9df1533.jpg@900w_1l_2o_100sh.jpg");
+}.plum4 {
+  background-image: url("http://img07.tooopen.com/images/20170316/tooopen_sy_201956178977.jpg");
+}.plum5 {
+  background-image: url("http://img.taopic.com/uploads/allimg/121019/234917-121019231h258.jpg");
+}.plum6 {
+  background-image: url("http://img.zcool.cn/community/01dc195951d604a8012193a3a885a2.jpg@1280w_1l_2o_100sh.jpg");
+}.plum7 {
+  background-image: url("http://img1.imgtn.bdimg.com/it/u=889120611,3801177793&fm=214&gp=0.jpg");
+}.plum8 {
+  background-image: url("http://img.zcool.cn/community/01626057ff29a1a84a0d304f3b5991.jpg@1280w_1l_2o_100sh.jpg");
+}.plum9 {
+  background-image: url("http://img3.redocn.com/tupian/20150421/xiaohuakafeikafeibeibiankuangsucai_4013296.jpg");
+}
 /* 方块 */
 
-.block0 {
+.block1 {
     background-image: url("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=897059013,2063237415&fm=27&gp=0.jpg");
+}
+.block2 {
+    background-image: url("http://pic2.nipic.com/20090424/1242397_110033072_2.jpg");
+}
+.block3 {
+    background-image: url("http://img.zcool.cn/community/01690955496f930000019ae92f3a4e.jpg@2o.jpg");
+}
+.block4 {
+    background-image: url("http://img.zcool.cn/community/01c92f56597f686ac7251c94e76e51.jpg@2o.jpg");
+}
+.block5 {
+    background-image: url("http://img.zcool.cn/community/01888f5922bad7b5b3086ed4cc3711.jpg@1280w_1l_2o_100sh.png");
+}
+.block6 {
+    background-image: url("http://pic2.ooopic.com/12/22/95/08bOOOPICe2_1024.jpg");
+}
+.block7 {
+    background-image: url("http://img.zcool.cn/community/01d941590c5577a801214550416103.jpg@2o.jpg");
+}
+.block8 {
+    background-image: url("http://img.zcool.cn/community/0191f1589c3469a8012060c83cebf3.jpg@1280w_1l_2o_100sh.png");
+}
+.block9 {
+    background-image: url("http://img.zcool.cn/community/01f09e577b85450000012e7e182cf0.jpg@1280w_1l_2o_100sh.jpg");
 }
 
 /* 红桃 */
 
-.heart0 {
+.heart1 {
     background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522758007682&di=32ec73fbfd91ac862207a1a2c0d4d056&imgtype=jpg&src=http%3A%2F%2Fimg4.imgtn.bdimg.com%2Fit%2Fu%3D1883303314%2C3294001635%26fm%3D214%26gp%3D0.jpg");
 }
-
+.heart2 {
+    background-image: url("http://news.cnhubei.com/ctjb/ctjbsgk/ctjb40/200808/W020080822221006461534.jpg");
+}
+.heart3 {
+    background-image: url("http://www.taopic.com/uploads/allimg/140421/318743-140421213T910.jpg");
+}
+.heart4 {
+    background-image: url("http://pic.58pic.com/58pic/14/64/56/25h58PIC3eG_1024.jpg");
+}
+.heart5 {
+    background-image: url("http://img.zcool.cn/community/01b52855dc4b6932f875a13252f0e4.jpg@1280w_1l_2o_100sh.jpg");
+}
+.heart6 {
+    background-image: url("http://img.zcool.cn/community/01eb00554914b90000019ae9846513.jpg@1280w_1l_2o_100sh.jpg");
+}
+.heart7 {
+    background-image: url("http://img05.tooopen.com/images/20150820/tooopen_sy_139205349641.jpg");
+}
+.heart8 {
+    background-image: url("http://img.taopic.com/uploads/allimg/121014/234931-1210140JK414.jpg");
+}
+.heart9 {
+    background-image: url("http://img.zcool.cn/community/01f17956138a5832f875a132eb1d85.jpg@1280w_1l_2o_100sh.jpg");
+}
 /* 黑桃 */
 
-.spade0 {
+.spade1 {
     background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1522758026630&di=83d5efd3e14defc9fad1db322ac0f394&imgtype=jpg&src=http%3A%2F%2Fimg0.imgtn.bdimg.com%2Fit%2Fu%3D46382950%2C1095124500%26fm%3D214%26gp%3D0.jpg");
+}
+.spade2 {
+    background-image: url("http://img05.tooopen.com/images/20160109/tooopen_sy_153858412946.jpg");
+}
+.spade3 {
+    background-image: url("http://img.zcool.cn/community/012cb757939a8e0000018c1b7482be.jpg@1280w_1l_2o_100sh.png");
+}
+.spade4 {
+    background-image: url("http://img3.redocn.com/tupian/20150106/aixinxiangkuang_3797284.jpg");
+}
+.spade5 {
+    background-image: url("http://img.zcool.cn/community/01c92f56597f686ac7251c94e76e51.jpg@2o.jpg");
+}
+.spade6 {
+    background-image: url("http://www.taopic.com/uploads/allimg/140507/240381-14050H2025093.jpg");
+}
+.spade7 {
+    background-image: url("http://img.zcool.cn/community/01e44d5711c84f6ac72513437994cb.jpg@2o.jpg");
+}
+.spade8 {
+    background-image: url("http://img.taopic.com/uploads/allimg/140714/234975-140G4155Z571.jpg");
+}
+.spade9 {
+    background-image: url("http://img.zcool.cn/community/01314e58ec3de2a8012049ef73a8fa.jpg");
 }

@@ -4,7 +4,7 @@
   <view class='game_backguond'>
     <view class='game_table'>
       <view wx:for="{{grids}}" class='game_item' wx:key="*this" wx:for-item="item" wx:for-index="index">
-         <view  class='{{item.style}} game_item_content' id='{{item.id}}' bindtap='itemClick'></view> 
+         <view animation="{{item.animation}}" animationend='animationend' class='{{item.style}} game_item_content' data-type='{{item.type}}' id='{{item.id}}' bindtap='itemClick'></view> 
       </view>
     </view>
   </view>

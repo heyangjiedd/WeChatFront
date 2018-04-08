@@ -5,6 +5,7 @@ Page({
   data: {
     currentProgress:100,
     grids:[],
+    animationData:{},
     x:0,y:0
   },
   //事件处理函数
@@ -14,14 +15,14 @@ Page({
   onLoad: function (query) {
     // this.timeOut()；
     // this.createCanvas();
-    this.rectData();
-    console.log('onLoad')
   },
   onReady: function () {
-    console.log('onReady')
   },
   onShow: function () {
-    console.log('onShow')
+    this.scale();
+    this.scaleSmall();
+    this.opacity();
+    this.rectData();
   },
   onHide: function () {
     console.log('onHide')
@@ -29,33 +30,108 @@ Page({
   onUnload: function () {
     console.log('onUnload')
   },
+  // 点击事件
+  itemClick: function (e) {
+    var _this = this;
+    var isClick = this.data.grids.filter(function(r){
+      return r.id == e.target.id || r.id == +e.target.id+6 || r.id == e.target.id-6
+    })
+    if(isClick.length  === 3){
+      return 
+    }
+    // 点击同一张图片，直接返回
+    if (_this.beforeId == e.target.id || e.target.id =='NAN'){
+      return
+    } else{
+      // 点击同一类型图片
+      if (_this.beforeType == e.target.dataset.type) {
+        this.data.grids.forEach(function (r) {
+          if (r.id == e.target.id || _this.beforeId == r.id) {
+            r.animation = _this.animationOpacity;
+            r.id = 'NAN';
+          }
+        });
+        _this.beforeType = null;
+        _this.beforeId = null;
+      } else {
+        this.data.grids.forEach(function (r) {
+          if (r.animation != ''){
+            r.animation = _this.animationScaleSmall;
+          }
+          if (r.id == e.target.id) {
+            r.animation = _this.animationScale
+          }
+        });
+        _this.beforeType = e.target.dataset.type;
+        _this.beforeId = e.target.id;
+      }
+    }
+    this.setData({
+      grids: this.data.grids
+    })
+    if (this.data.grids.filter(function(r){
+      return r.id != 'NAN'
+    }).length == 0){
+      wx.showModal({
+        content: 'game over',
+        confirmText: "再来一局",
+        cancelText: "返回",
+        success: function (res) {
+          if (res.confirm) {
+            _this.rectData();
+          }else{
 
+          }
+        }
+      });
+    }
+  },
   //矩阵数据
   rectData(){
-    var array = [];
-    for (var i = 1; i < 7; i++) {
-      for (var j = 1; j < 7; j++) {
-        var random = Math.random();
-        var style = '';
-        if(random<0.25){
-          style = 'block0';
-        } else if (random < 0.5){
-          style = 'heart0';
-        } else if (random < 0.75) {
-          style = 'spade0';
-        }else{
-          style = 'plum0';
-        }
-        array.push({ style: style,id:i*10+j})
-      }
+    var array = [], arr = this.createData();
+    for (var i = 1; i < 37; i++) {
+        array.push({ style: 'plum' +arr[i-1], id: i, animation:'',type:arr[i-1]})
     }
     this.setData({
       grids:array
     })
   },
-  // 点击事件
-  itemClick:function(e){
-    debugger
+  //生成配对信息
+  createData(){
+    var arr = [];
+    for (var i = 1; i < 10; i++) {
+      arr.push(i); arr.push(i); arr.push(i); arr.push(i);
+    }
+    return arr.sort(function(){
+      return 0.5 - Math.random()
+    })
+  },
+  //放大动画
+  scale:function(){
+    var animationScale = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
+    animationScale.scale(1.1, 1.1).step();
+    this.animationScale = animationScale;
+  },
+  //缩小动画
+  scaleSmall: function () {
+    var animationScaleSmall = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
+    animationScaleSmall.scale(1,1).step();
+    this.animationScaleSmall = animationScaleSmall;
+  },
+  //消失动画
+  opacity: function () {
+    var animationOpacity = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
+    animationOpacity.scale(1.1, 1.1).opacity(0).step();
+    this.animationOpacity = animationOpacity;
   },
   //canvas组件事件
   start: function (e) {
