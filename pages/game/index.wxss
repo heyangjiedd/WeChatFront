@@ -48,7 +48,9 @@ progress {
   justify-content: center;
   border: 3px solid #dddfff;
 }
-
+.redBorder{
+  border: 1px solid red
+}
 .game_item_content {
   height: 100%;
   width: 100%;

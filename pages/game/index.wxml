@@ -2,9 +2,9 @@
 <view class="container">
   <progress percent="{{currentProgress}}" />
   <view class='game_backguond'>
-    <view class='game_table'>
+    <view class='game_table' animation="{{animationData}}" style='opacity:0'>
       <view wx:for="{{grids}}" class='game_item' wx:key="*this" wx:for-item="item" wx:for-index="index">
-         <view animation="{{item.animation}}" animationend='animationend' class='{{item.style}} game_item_content' data-type='{{item.type}}' id='{{item.id}}' bindtap='itemClick'></view> 
+         <view animation="{{item.animation}}" animationend='animationend' class='{{item.style}} {{item.border}}  game_item_content' data-type='{{item.type}}' id='{{item.id}}' bindtap='itemClick'></view> 
       </view>
     </view>
   </view>

@@ -49,6 +49,7 @@ Page({
           if (r.id == e.target.id || _this.beforeId == r.id) {
             r.animation = _this.animationOpacity;
             r.id = 'NAN';
+            r.border = ''
           }
         });
         _this.beforeType = null;
@@ -59,9 +60,15 @@ Page({
             r.animation = _this.animationScaleSmall;
           }
           if (r.id == e.target.id) {
-            r.animation = _this.animationScale
+            r.animation = _this.animationScale;
           }
         });
+        this.data.grids.reduce(function (sum,r) {
+          r.border = ''
+          if (r.id != e.target.id && e.target.dataset.type == r.type) {
+                r.border = 'redBorder'
+          }
+        },0);
         _this.beforeType = e.target.dataset.type;
         _this.beforeId = e.target.id;
       }
@@ -72,6 +79,9 @@ Page({
     if (this.data.grids.filter(function(r){
       return r.id != 'NAN'
     }).length == 0){
+      _this.tableAnimationEnd();
+      _this.beforeType = null;
+      _this.beforeId = null;
       wx.showModal({
         content: 'game over',
         confirmText: "再来一局",
@@ -90,11 +100,12 @@ Page({
   rectData(){
     var array = [], arr = this.createData();
     for (var i = 1; i < 37; i++) {
-        array.push({ style: 'plum' +arr[i-1], id: i, animation:'',type:arr[i-1]})
+      array.push({ style: 'plum' + arr[i - 1], id: i, border:'',animation:'',type:arr[i-1]})
     }
     this.setData({
       grids:array
-    })
+    });
+    this.tableAnimationEnter();
   },
   //生成配对信息
   createData(){
@@ -104,6 +115,28 @@ Page({
     }
     return arr.sort(function(){
       return 0.5 - Math.random()
+    })
+  },
+  //进入动画
+  tableAnimationEnter:function(){
+    var animation = wx.createAnimation({
+      duration: 3000,
+      timingFunction: 'ease-in',
+    });
+    animation.opacity(1).step();
+    this.setData({
+      animationData: animation.export()
+    })
+  },
+  //结束动画
+  tableAnimationEnd: function () {
+    var animation = wx.createAnimation({
+      duration: 3000,
+      timingFunction: 'ease-in',
+    });
+    animation.opacity(0).step();
+    this.setData({
+      animationData: animation.export()
     })
   },
   //放大动画
