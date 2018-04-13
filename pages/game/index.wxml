@@ -9,8 +9,8 @@
     </view>
   </view>
   <view class='tools'>
-    <button class="weui-btn mini-btn" type="primary" size="mini">开始</button>
-    <button class="weui-btn mini-btn" type="default" size="mini">暂停</button>
-    <button class="weui-btn mini-btn" type="warn" size="mini">结束</button>
+    <button class="weui-btn mini-btn" bindtap='primary' type="primary" size="mini">开始</button>
+    <button class="weui-btn mini-btn" bindtap='default' type="default" size="mini">暂停</button>
+    <button class="weui-btn mini-btn" bindtap='warn' type="warn" size="mini">结束</button>
   </view>
 </view>

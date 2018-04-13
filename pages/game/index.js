@@ -22,6 +22,7 @@ Page({
     this.scale();
     this.scaleSmall();
     this.opacity();
+    this.opacity1();
     this.rectData();
   },
   onHide: function () {
@@ -33,13 +34,10 @@ Page({
   // 点击事件
   itemClick: function (e) {
     var _this = this;
-    var isClick = this.data.grids.filter(function(r){
-      return r.id == e.target.id || r.id == +e.target.id+6 || r.id == e.target.id-6
-    })
-    if(isClick.length  === 3){
+    if (!_this.isCanClick(e.target.id)){
       return 
     }
-    // 点击同一张图片，直接返回
+    // 点击同一张图片或者消失的图片，直接返回。
     if (_this.beforeId == e.target.id || e.target.id =='NAN'){
       return
     } else{
@@ -55,6 +53,8 @@ Page({
         _this.beforeType = null;
         _this.beforeId = null;
       } else {
+        // 点击不同类型图片
+        // 点击图片放大，放大图片恢复原来大小
         this.data.grids.forEach(function (r) {
           if (r.animation != ''){
             r.animation = _this.animationScaleSmall;
@@ -63,12 +63,13 @@ Page({
             r.animation = _this.animationScale;
           }
         });
-        this.data.grids.reduce(function (sum,r) {
+        //与点击图片相同类型显示红色提示框
+        this.data.grids.forEach(function (r) {
           r.border = ''
-          if (r.id != e.target.id && e.target.dataset.type == r.type) {
-                r.border = 'redBorder'
+          if (r.id != e.target.id && e.target.dataset.type == r.type && _this.isCanClick(r.id)) {
+                r.border = 'redBorder';
           }
-        },0);
+        });
         _this.beforeType = e.target.dataset.type;
         _this.beforeId = e.target.id;
       }
@@ -88,7 +89,7 @@ Page({
         cancelText: "返回",
         success: function (res) {
           if (res.confirm) {
-            _this.rectData();
+            _this.rectData(_this.animationOpacity1);
           }else{
 
           }
@@ -97,15 +98,25 @@ Page({
     }
   },
   //矩阵数据
-  rectData(){
+  rectData(options =''){
     var array = [], arr = this.createData();
     for (var i = 1; i < 37; i++) {
-      array.push({ style: 'plum' + arr[i - 1], id: i, border:'',animation:'',type:arr[i-1]})
+      array.push({ style: 'plum' + arr[i - 1], id: i, border: '', animation: options,type:arr[i-1]})
     }
     this.setData({
       grids:array
     });
     this.tableAnimationEnter();
+  },
+  //检测是否可点击
+  isCanClick(id){
+    var isClick = this.data.grids.filter(function (r) {
+      return r.id == id || r.id == +id + 6 || r.id == id - 6
+    })
+    if(isClick.length  === 3) {
+      return false;
+    }
+    return true;
   },
   //生成配对信息
   createData(){
@@ -165,6 +176,27 @@ Page({
     });
     animationOpacity.scale(1.1, 1.1).opacity(0).step();
     this.animationOpacity = animationOpacity;
+  },
+  // 显示动画
+  opacity1: function () {
+    var animationOpacity1 = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'ease',
+    });
+    animationOpacity1.scale(1, 1).opacity(1).step();
+    this.animationOpacity1 = animationOpacity1;
+  },
+  // 点击开始
+  primary(){
+    
+  },
+  // 点击暂停
+  default() {
+
+  },
+  // 点击结束
+  warn() {
+
   },
   //canvas组件事件
   start: function (e) {
