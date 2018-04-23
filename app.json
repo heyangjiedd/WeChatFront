@@ -7,7 +7,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "测试",
+    "navigationBarTitleText": "不是测试",
     "navigationBarTextStyle":"black"
   }
 }
